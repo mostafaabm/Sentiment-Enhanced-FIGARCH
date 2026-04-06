@@ -1,9 +1,6 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Sat May 24 18:57:48 2025
 
-@author: mostafamoghadam
+"""
+@author: mostafaabm
 """
 
 from __future__ import print_function
