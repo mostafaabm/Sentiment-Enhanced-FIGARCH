@@ -9,13 +9,12 @@ This project introduces a novel framework that integrates machine-learning-deriv
 - [Repository Structure](#repository-structure)
 - [Dependencies](#dependencies)
 - [How to Run the Code](#how-to-run-the-code)
-- [Methodology Summary](#methodology-summary)
 - [Contact](#contact)
 
 ---
 
 ## Overview
-Traditional financial forecasting models often assume news impacts markets uniformly across a 24-hour cycle. This study addresses that limitation by explicitly examining how sentiment effects differ across specific intraday windows. We utilize a dataset of over 347,000 asset-specific news headlines covering 37 assets across the stock, cryptocurrency, and commodity markets (March 2022 to January 2025).
+This study investigates how sentiment effects differ across specific intraday windows. We utilize a dataset of over 347,000 asset-specific news headlines covering 37 assets across the stock, cryptocurrency, and commodity markets (March 2022 to January 2025).
 
 The code provided here reproduces the two primary stages of the research:
 1. **Natural Language Processing & Machine Learning:** Generating Bag-of-Words (TF-IDF) features and training Random Forest classifiers to compute time-frame-specific impact probabilities.
@@ -77,19 +76,3 @@ python Alpha_BOW_FIGARCH.py
 ```
 * **What it does:** Iterates through 8 distinct sets of exogenous variables across 4 time horizons. It scales the inputs, fits the FIGARCH(1,1) models, and calculates the statistical significance (p-values) of all core and exogenous parameters while avoiding look-ahead bias in the data alignment.
 * **Output:** Saves `FIGARCH_Comparative_Results.xlsx` to the `./results/` directory, detailing AIC, BIC, LLF, and variable significance counts.
-
----
-
-## Methodology Summary
-- **Sentiment Extraction:** Average sentiment scores are derived using the domain-specific **FinBERT** model.
-- **Impact Probabilities:** A **Random Forest** classifier assesses the likelihood of a news headline pushing an asset's return past its 75th (positive) or 25th (negative) percentile.
-- **Volatility Modeling:** A **FIGARCH(1,1)** model is augmented with these features (e.g., $IP^{+}_{w,t}$, $AS^{-}_{t}$) as exogenous variables to capture long-memory effects and volatility clustering.
-- **Robustness Checks:** The methodology includes robustness verifications for alternative train/test splits (70/30, 60/40), alternative prediction probability thresholds (0.50, 0.75), and alternative model architectures (GARCH-X, EGARCH).
-
----
-
-## Contact
-**Mostafa Abdolahi Moghadam**  
-PhD Candidate, Financial Mathematics  
-Wilfrid Laurier University, Canada  
-Email: [mostafamoghadam68@gmail.com](mailto:mostafamoghadam68@gmail.com)
