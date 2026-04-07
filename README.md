@@ -66,7 +66,7 @@ Run the machine-learning pipeline to preprocess the text and train the Random Fo
 ```bash
 python AlphaVantage_BOW_dataset.py
 ```
-* **What it does:** Reads the raw datasets, extracts TF-IDF features, applies custom financial stopwords/synonyms, tunes the Random Forest via GridSearch (strictly on training data to prevent leakage), and outputs the impact probabilities for positive/negative directional movements across all time frames.
+* **What it does:** Reads the raw datasets, extracts TF-IDF features, applies custom financial stopwords/synonyms, tunes the Random Forest via GridSearch, and outputs the impact probabilities for positive/negative directional movements across all time frames.
 * **Output:** Saves `RF_BOW_summary.xlsx` and generated datasets into the `./data/` and `./results/` directories.
 
 ### 2. Fit the FIGARCH Models
