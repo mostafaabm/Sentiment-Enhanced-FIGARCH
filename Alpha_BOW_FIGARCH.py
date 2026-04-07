@@ -1,9 +1,6 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Sat May 31 23:04:08 2025
 
-@author: mostafamoghadam
+"""
+@author: mostafaabm
 """
 
 import os
@@ -175,21 +172,6 @@ summary_df = pd.DataFrame({
 }).fillna(0).astype(int)
 """
 ###########################
-""" ## THIS IS FOR THE TIME WE USE THE EXISTING RESULTS EXCEL FILE
-import math
-def safe_parse_pvalues(x):
-    if isinstance(x, dict):
-        return x
-    if isinstance(x, str):
-        try:
-            return eval(x, {"nan": float('nan'), "inf": float('inf'), "__builtins__": {}})
-        except Exception:
-            return x  # return as-is if unparseable
-    return x
-# Replace the previous apply line with:
-results_df['P-values'] = results_df['P-values'].apply(safe_parse_pvalues)
-"""
-
 # Count appearances and significance per exogenous variable set
 exog_variable_counts = defaultdict(lambda: defaultdict(int))
 exog_significant_10  = defaultdict(lambda: defaultdict(int))
@@ -201,27 +183,6 @@ A1 = results_df[
 ][['Exog_Set', 'P-values']]
 
 A2 = results_df[results_df['LogReturn'].isin(['logreturn_CC', 'logreturn_CO'])][['Exog_Set', 'P-values']]
-
-"""THIS IS FOR THE TIME WE USE THE EXISTING RESULTS EXCEL FILE
-for _, row in pd.concat([A1, A2]).iterrows():
-    exog_set = row['Exog_Set']
-    pvals    = row['P-values']
-    if isinstance(pvals, dict):
-        for var, pval in pvals.items():
-            try:
-                if math.isnan(pval):   # skip nan p-values
-                    continue
-            except TypeError:
-                continue
-            exog_variable_counts[exog_set][var] += 1
-            if pval < 0.10:
-                exog_significant_10[exog_set][var] += 1
-            if pval < 0.05:
-                exog_significant_5[exog_set][var] += 1
-            if pval < 0.01:
-                exog_significant_1[exog_set][var] += 1
-
-"""
 
 for _, row in pd.concat([A1, A2]).iterrows():
     exog_set = row['Exog_Set']
@@ -259,16 +220,6 @@ with ExcelWriter(output_file, engine='xlsxwriter') as writer:
             subset.to_excel(writer, sheet_name=lr_col[:31], index=False)
     summary_df.to_excel(writer, sheet_name="P-values Summary", index = True)
 print(f"Results saved to {output_file}")
-
-
-
-'''
-for n, i in enumerate(csv_files):
-    ticker = os.path.basename(i).split("_")[2]
-    print(n,"========>",ticker)
-'''
-
-
 
 
 
