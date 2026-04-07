@@ -336,6 +336,12 @@ if __name__ == "__main__":
                         })
         except Exception as e:
             print(f"ERROR processing {symbol}: {e}")
+        # Finalize merged_df for stocks and crypto
+        merged_df = pd.merge(merged_df_OO, merged_df_CC[['date', 'RFIP_Pos_CC', 'RFIP_Neg_CC', 'RFIP_Pos_CO', 'RFIP_Neg_CO']], on='date', how='outer')
+            
+        csv_filename = f"RF_BOW_{symbol}_dataset.csv"
+        csv_out_path = os.path.join("./data/Alpha_FinBERT_datasets", csv_filename)
+        merged_df.to_csv(csv_out_path, index=False)
         
     # Save summary to Excel
     with pd.ExcelWriter(output_path, engine='xlsxwriter') as writer:
