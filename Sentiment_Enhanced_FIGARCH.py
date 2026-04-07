@@ -27,7 +27,7 @@ random.seed(SEED)
 np.random.seed(SEED)
 
 # Define directories using relative paths for repository consistency
-data_dir = "./datasets/Alpha_FinBERT_datasets"
+data_dir = "./Datasets/Alpha_FinBERT_datasets"
 output_dir = "./results"
 os.makedirs(output_dir, exist_ok=True)
 
