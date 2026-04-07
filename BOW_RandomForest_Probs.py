@@ -39,9 +39,6 @@ from sklearn.model_selection import train_test_split
 from pandas import ExcelWriter
 from sklearn.ensemble import RandomForestClassifier
 
-#ticker = 'commodity'
-
-
 
 def Window_separation(df): 
     
