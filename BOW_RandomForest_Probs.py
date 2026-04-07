@@ -94,7 +94,7 @@ def generate_bow(ticker):
     and defines binary target variables based on return quantiles.
     """
     # Use relative paths assuming data is in a 'data' folder in the repo
-    df_raw = pd.read_csv(f"./data/Alpha_FinBERT_datasets/{ticker}_Alpha_FinBERT_dataset.csv")
+    df_raw = pd.read_csv(f"./Datasets/Alpha_FinBERT_datasets/{ticker}_Alpha_FinBERT_dataset.csv")
     df = Window_separation(df_raw)
 
     # Import frequency-based dataset to merge with BOW
