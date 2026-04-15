@@ -1,6 +1,5 @@
 """
 Forecasting Asset Returns with Sentiment-Enhanced FIGARCH Models
-Author: Mostafa Abdolahi Moghadam
 
 Description:
 This script processes AlphaVantage financial news headlines and financial return data.
