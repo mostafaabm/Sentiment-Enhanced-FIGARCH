@@ -1,6 +1,5 @@
 """
 Forecasting Asset Returns with Sentiment-Enhanced FIGARCH Models
-Author: Mostafa Abdolahi Moghadam
 
 Description:
 This script fits Fractionally Integrated GARCH (FIGARCH) models on financial return 
